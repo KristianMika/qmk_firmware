@@ -16,14 +16,10 @@ void clicked(void) {
 }
 
 void turned(bool clockwise) {
-    if (IS_LAYER_ON(6)) {
-        tap_code(clockwise ? KC_VOLU : KC_VOLD);
-    } else if (IS_LAYER_ON(3)) {
-        tap_code16(clockwise ? LCTL(KC_TAB) : LCTL(LSFT(KC_TAB)));
-    } else if (IS_LAYER_ON(5)) {
-        tap_code16(clockwise ? LGUI(KC_Y) : LGUI(KC_Z));
+    if (IS_LAYER_ON(1)) {
+        tap_code16(clockwise ? KC_BRIGHTNESS_UP : KC_BRIGHTNESS_DOWN);
     } else {
-        tap_code16(clockwise ? KC_PGDN : KC_PGUP);
+        tap_code(clockwise ? KC_VOLU : KC_VOLD);
     }
 }
 
