@@ -34,9 +34,10 @@ void keyboard_post_init_user(void) {
     //debug_mouse=true;
 
     // Store user selected rgb hsv:
+    const float intensity = 0.1;
     _hue = rgblight_get_hue();
     _saturation = rgblight_get_sat();
-    _value = rgblight_get_val();
+    _value = rgblight_get_val() * intensity;
 
     // Flash a little on start
     defer_exec(50, flash_led, NULL);
