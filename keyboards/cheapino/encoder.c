@@ -18,6 +18,8 @@ void clicked(void) {
 void turned(bool clockwise) {
     if (IS_LAYER_ON(1)) {
         tap_code16(clockwise ? KC_BRIGHTNESS_UP : KC_BRIGHTNESS_DOWN);
+    } else if (IS_LAYER_ON(2)) {
+        tap_code16(clockwise ? KC_MEDIA_NEXT_TRACK : KC_MEDIA_PREV_TRACK);
     } else {
         tap_code(clockwise ? KC_VOLU : KC_VOLD);
     }

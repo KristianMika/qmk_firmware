@@ -16,11 +16,11 @@ uint8_t _value;
 // stop us from using the keyboard.
 // https://docs.qmk.fm/#/custom_quantum_functions?id=deferred-executor-registration
 uint32_t flash_led(uint32_t next_trigger_time, void *cb_arg) {
-    rgblight_sethsv(_hue_countdown * 5, 230, 70);
+    rgblight_sethsv(_hue_countdown * 5, 230, 40);
     _hue_countdown--;
     if (_hue_countdown == 0) {
         // Finished, reset to user chosen led color
-        rgblight_sethsv(_hue, _saturation, _value);
+        // rgblight_sethsv(_hue, _saturation, _value);
         return 0;
     } else {
         return 50;
@@ -33,11 +33,11 @@ void keyboard_post_init_user(void) {
     //debug_keyboard=true;
     //debug_mouse=true;
 
-    // Store user selected rgb hsv:
-    const float intensity = 0.1;
-    _hue = rgblight_get_hue();
-    _saturation = rgblight_get_sat();
-    _value = rgblight_get_val() * intensity;
+    // set custom LED color
+    const float intensity = 0.15;
+    _hue = 255;
+    _saturation = 255;
+    _value = (uint8_t) (255 * intensity);
 
     // Flash a little on start
     defer_exec(50, flash_led, NULL);
